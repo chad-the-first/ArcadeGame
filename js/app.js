@@ -6,8 +6,17 @@ var Enemy = function() {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
-    this.x = 0;
-    this.y = 60;
+    this.x = -100;
+/*    var axe;
+    this.x = axe;
+    this.run = function(){
+        var speed = function(){
+            console.log(axe);
+            axe = axe + 2 ;
+            if(axe > 505){window.clearInterval(int2)};
+        }
+        var int2 = setInterval(speed, 10);
+    } */
 };
 
 // Update the enemy's position, required method for game
@@ -15,7 +24,7 @@ var Enemy = function() {
 Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
-    // all computers.
+    // all computers.    
 };
 
 // Draw the enemy on the screen, required method for game
@@ -23,8 +32,72 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-const enemy1 = new Enemy();
-let allEnemies = [enemy1];
+
+var enemy1 = new Enemy();
+enemy1.y = 230;
+enemy1.speed = function(enemy){
+    enemy.x = enemy.x + 1 ;
+};
+var enemy2 = new Enemy();
+enemy2.y = 230;
+enemy2.speed = function(enemy){
+    enemy.x = enemy.x + 2 ;
+};
+var enemy3 = new Enemy();
+enemy3.y = 230;
+enemy3.speed = function(enemy){
+    enemy.x = enemy.x + 3 ;
+};
+
+var enemy4 = new Enemy();
+enemy4.y = 145;
+enemy4.speed = function(enemy){
+    enemy.x = enemy.x + 1 ;
+};
+var enemy5 = new Enemy();
+enemy5.y = 145;
+enemy5.speed = function(enemy){
+    enemy.x = enemy.x + 2 ;
+};
+var enemy6 = new Enemy();
+enemy6.y = 145;
+enemy6.speed = function(enemy){
+    enemy.x = enemy.x + 3 ;
+};
+
+var enemy7 = new Enemy();
+enemy7.y = 60;
+enemy7.speed = function(enemy){
+    enemy.x = enemy.x + 1 ;
+};
+var enemy8 = new Enemy();
+enemy8.y = 60;
+enemy8.speed = function(enemy){
+    enemy.x = enemy.x + 2 ;
+};
+var enemy9 = new Enemy();
+enemy9.y = 60;
+enemy9.speed = function(enemy){
+    enemy.x = enemy.x + 3 ;
+};
+
+
+var allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7, enemy8, enemy9];
+
+
+var random = function(){
+    var randEnemy = allEnemies[Math.floor(Math.random() * allEnemies.length)];
+    var run = function(){   
+        console.log(randEnemy);
+        randEnemy.speed(randEnemy);
+        if(randEnemy.x > 505){
+            window.clearInterval(int2)
+            randEnemy.x = -100;
+        };
+    };
+    var int2 = setInterval(run, 10);
+};
+setInterval(random, 500);
 
 // Now write your own player class
 // This class requires an update(), render() and
@@ -33,11 +106,12 @@ let Player = function() {
     this.sprite = 'images/char-boy.png';
 };
 Player.prototype = Object.create(Enemy.prototype);
-
+Player.prototype.construtor = Player;
 let player = new Player();
 player.x = 202;
 player.y = 400;
 
+//Methode to handle player movment
 player.handleInput = function(key){
     if(key === 'left' && player.x > 100){
         player.x -= 100;
