@@ -114,16 +114,22 @@ let player = new Player();
 player.x = 202;
 player.y = 396;
 
+var win = function(){
+    if(player.y < 10){   
+        setTimeout(function(){ alert("!! Congratulations You've Won !!");player.y = 396; },300);
+    }
+};
+
 //Methode to handle player movment
 player.handleInput = function(key){
     if(key === 'left' && player.x > 100){
-        player.x -= 100;
+        player.x -= 100;win();
     }else if(key === 'right' && player.x < 400){
-        player.x += 100;
+        player.x += 100;win();
     }else if(key === 'up' && player.y > 0){
-        player.y -= 83;
+        player.y -= 83;win();
     }else if(key === 'down' && player.y < 380){
-        player.y += 83;
+        player.y += 83;win();
     }
 };
 
