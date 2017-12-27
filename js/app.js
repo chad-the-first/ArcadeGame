@@ -31,7 +31,7 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-
+//list of enemy ogjects
 var enemy1 = new Enemy();
 enemy1.y = 230;
 enemy1.speed = function(enemy){
@@ -114,22 +114,24 @@ let player = new Player();
 player.x = 202;
 player.y = 396;
 
-var win = function(){
-    if(player.y < 10){   
-        setTimeout(function(){ alert("!! Congratulations You've Won !!");player.y = 396; },300);
+//Check if char reached the last block and win alert
+player.win = function(){
+    if(this.y < 10){   
+        setTimeout(function(){ alert("!! Congratulations You've Won !!")},300);
+        this.y = 396;
     }
 };
 
 //Methode to handle player movment
 player.handleInput = function(key){
-    if(key === 'left' && player.x > 100){
-        player.x -= 100;win();
-    }else if(key === 'right' && player.x < 400){
-        player.x += 100;win();
-    }else if(key === 'up' && player.y > 0){
-        player.y -= 83;win();
-    }else if(key === 'down' && player.y < 380){
-        player.y += 83;win();
+    if(key === 'left' && this.x > 100){
+        this.x -= 100;player.win();
+    }else if(key === 'right' && this.x < 400){
+        this.x += 100;player.win();
+    }else if(key === 'up' && this.y > 0){
+        this.y -= 83;player.win();
+    }else if(key === 'down' && this.y < 380){
+        this.y += 83;player.win();
     }
 };
 

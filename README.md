@@ -1,6 +1,11 @@
 frontend-nanodegree-arcade-game
 ===============================
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+This game uses javascript as its base code and HTML5 canvas to load 2d images. If you want to play the game you have to implement all the files in the repository, otherwise the game will break.
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+How To Play
+===========
+
+Use your keyboard arrow keys to move the boy character up down right left. In order to win the game you have to cross the road to the water without hitting with any bug. If you hit any bug your character will go back to the first block. If you get across to the water you will win the game and get a notification congratulating you.
+
+Have Fun.
